@@ -11,7 +11,9 @@ public class CircleTests
     [DataRow(1)]
     public void Circle_Constructor_ValidArguments(double radius)
     {
-        Assert.AreEqual(new Circle(radius).Radius, radius);
+        var circle = new Circle(radius);
+        
+        Assert.AreEqual(circle.Radius, radius);
     }
     
     [TestMethod]
@@ -28,7 +30,9 @@ public class CircleTests
     [DataRow(7.5645455722826181E+153)]
     public void Circle_CalculateArea_ThrowsExceptionOnInvalidArguments(double radius)
     {
-        Assert.ThrowsException<ArgumentOutOfRangeException>(() => new Circle(radius).CalculateArea());
+        var circle = new Circle(radius);
+        
+        Assert.ThrowsException<ArgumentOutOfRangeException>(() => circle.CalculateArea());
     }
     
     [TestMethod]
@@ -36,7 +40,10 @@ public class CircleTests
     [DataRow(5, 78.539)]
     public void Circle_CalculateArea_ValidReturnValue(double radius, double result)
     {
-        double area = new Circle(radius).CalculateArea();
-        Assert.AreEqual(area, result, 0.001);
+        var circle = new Circle(radius);
+        
+        double actual = circle.CalculateArea();
+
+        Assert.AreEqual(actual, result, 0.001);
     }
 }

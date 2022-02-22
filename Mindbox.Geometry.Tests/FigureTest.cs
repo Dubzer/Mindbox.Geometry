@@ -11,7 +11,10 @@ public class FigureTest
     {
         var triangle = new Triangle(x, y, z);
         var upcastedTriangle = (Figure)triangle;
-        Assert.AreEqual(result, upcastedTriangle.CalculateArea());
+        
+        double actual = upcastedTriangle.CalculateArea();
+        
+        Assert.AreEqual(result, actual);
     }
     
     [TestMethod]
@@ -20,6 +23,9 @@ public class FigureTest
     {
         var circle = new Circle(radius);
         var upcastedCircle = (Figure)circle;
-        Assert.AreEqual(result, upcastedCircle.CalculateArea(), 0.001);
+
+        double actual = upcastedCircle.CalculateArea();
+        
+        Assert.AreEqual(result, actual, 0.001);
     }
 }

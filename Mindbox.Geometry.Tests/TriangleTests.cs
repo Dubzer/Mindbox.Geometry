@@ -12,7 +12,10 @@ public class TriangleTests
     public void Triangle_Constructor_ValidArguments(double x, double y, double z)
     {
         var triangle = new Triangle(x, y, z);
-        Assert.AreEqual((triangle.X, triangle.Y, triangle.Z), (x, y, z));
+
+        var triangleSides = (triangle.X, triangle.Y, triangle.Z);
+        
+        Assert.AreEqual(triangleSides, (x, y, z));
     }
 
     [TestMethod]
@@ -29,7 +32,10 @@ public class TriangleTests
     [DataRow(3, 4, 5, 6)]
     public void Triangle_CalculateArea_ValidReturnValue(double x, double y, double z, double result)
     {
-        double area = new Triangle(x, y, z).CalculateArea();
+        var triangle = new Triangle(x, y, z);
+        
+        double area = triangle.CalculateArea();
+        
         Assert.AreEqual(area, result, 0.001);
     }
     
@@ -38,7 +44,10 @@ public class TriangleTests
     [DataRow(3, 3, 3, false)]
     public void Triangle_IsRight_ValidReturnValue(double x, double y, double z, bool result)
     {
-        bool isRight = new Triangle(x, y, z).IsRight();
+        var triangle = new Triangle(x, y, z);
+        
+        bool isRight = triangle.IsRight();
+        
         Assert.AreEqual(isRight, result);
     }
 }
